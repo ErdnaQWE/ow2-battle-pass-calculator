@@ -150,8 +150,8 @@ document.addEventListener('alpine:init', () => {
                 else if (this.currentTier() === 200 && this.currentTierXp() >= 250000) return 200;
                 else if (this.currentTier() > 175) return 175;
                 else if (this.currentTier() > 155) return 155;
-                else if (this.currentTier() > 135) return 135;
-                else if (this.currentTier() > 120) return 120;
+                else if (this.currentTier() > 125) return 125;
+                else if (this.currentTier() > 115) return 115;
                 else if (this.currentTier() > 105) return 105;
                 else if (this.currentTier() > 95) return 95;
                 else if (this.currentTier() > 85) return 85;
