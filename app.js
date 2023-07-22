@@ -102,17 +102,17 @@ document.addEventListener('alpine:init', () => {
              * @param {Date} today default is today, overwrite for testing
              * @returns {Object} {season: number, seasonStart: Date, seasonEnd: Date}
              */
-            getSeason(startDate = new Date('2023-06-13'), today = new Date()) {
+            getSeason(startDate = new Date('2023-06-13'), today = new Date(), seasonOffset = 5) {
                 const oneWeek = 7 * 24 * 60 * 60 * 1000;
                 // Calculate season duration in milliseconds
                 const seasonDuration = 8 * oneWeek; // Season 5 was 8 weeks instead of 9, will need to rethink this
                 // Calculate the difference between start date and today
                 const diff = today - startDate;
                 // Get the season number
-                const season = Math.floor(diff / seasonDuration) + 5;
+                const season = Math.floor(diff / seasonDuration) + seasonOffset;
 
                 // Get the start date of the season
-                const seasonStart = new Date(startDate.getTime() + seasonDuration * (season - 1));
+                const seasonStart = new Date(startDate.getTime() + seasonDuration * (season - seasonOffset));
                 // Get the end date of the season
                 const seasonEnd = new Date(seasonStart.getTime() + seasonDuration - 1);
 
