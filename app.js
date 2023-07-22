@@ -21,7 +21,7 @@ document.addEventListener('alpine:init', () => {
 
             init() {
                 // get current season and display it
-                this.season = this.getSeason(new Date('2022-10-04'));
+                this.season = this.getSeason(new Date('2023-06-13')); // Season 5
                 document.getElementById('season_title').innerText = 'Season ' + this.season.season;
                 if (window.location.hash) {
                     const params = new URLSearchParams(window.location.hash.substring(1));
@@ -98,14 +98,14 @@ document.addEventListener('alpine:init', () => {
             //season
             /**
              *
-             * @param {Date} startDate default is 2022-10-04
+             * @param {Date} startDate default is 2023-06-13 (Season 5)
              * @param {Date} today default is today, overwrite for testing
              * @returns {Object} {season: number, seasonStart: Date, seasonEnd: Date}
              */
             getSeason(startDate = new Date('2023-06-13'), today = new Date()) {
                 const oneWeek = 7 * 24 * 60 * 60 * 1000;
                 // Calculate season duration in milliseconds
-                const seasonDuration = 9 * oneWeek;
+                const seasonDuration = 8 * oneWeek; // Season 5 was 8 weeks instead of 9, will need to rethink this
                 // Calculate the difference between start date and today
                 const diff = today - startDate;
                 // Get the season number
