@@ -23,7 +23,7 @@ document.addEventListener('alpine:init', () => {
             init() {
                 // get current season and display it
                 this.season = this.getSeason(new Date('2023-06-13')); // Season 5
-                document.getElementById('season_title').innerText = 'Season ' + this.season.season + ' (Started ' + this.season.seasonStart + ', ' + int(this.season.seasonEnd-this.season.seasonStart) + ' days left!)';
+                document.getElementById('season_title').innerText = 'Season ' + this.season.season + ' (Started ' + this.season.seasonStart + ', ' + (this.season.seasonEnd-this.season.seasonStart) + ' days left!)';
                 if (window.location.hash) {
                     const params = new URLSearchParams(window.location.hash.substring(1));
 
