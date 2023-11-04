@@ -346,7 +346,7 @@ document.addEventListener('alpine:init', () => {
                 return this.projectedPrestigeTiers() >= 120;
             },
             projectedPrestigeDays() {
-                return this.seasonLength() - this.projectedPrestigeSpareDays()) - this.daysPlayed();
+                return (this.seasonLength() - this.projectedPrestigeSpareDays()) - this.daysPlayed();
             },
             projectedPrestigeSpareDays() {
                 let extra = this.projectedXp() - (2000000 - this.currentXp());
