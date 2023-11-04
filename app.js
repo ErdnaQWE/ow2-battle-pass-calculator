@@ -1,28 +1,29 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('app', function () {
         return {
-            //past progress
+            // Past Progress
             current_tier: this.$persist(1),
             current_tier_xp: this.$persist(0),
             days_missed: this.$persist(0),
 
-            //future plans
+            // Future Plans
             expected_weeklies: this.$persist(8),
             expected_play_days: this.$persist(5),
             expected_dailies: this.$persist(3),
             expected_daily_matches: this.$persist(5),
             expected_match_xp: this.$persist(500),
             days_to_be_missed: this.$persist(0),
-            // default values
+            
+            // Default Values
             season: { season: 1, seasonStart: new Date('2022-10-04'), seasonEnd: new Date('2022-12-06') },
 
-            //ui
+            // UI
             tab: this.$persist('all'),
 
             init() {
                 // get current season and display it
                 this.season = this.getSeason(new Date('2023-06-13')); // Season 5
-                document.getElementById('season_title').innerText = 'Season ' + this.season.season;
+                document.getElementById('season_title').innerText = 'Season ' + this.season.season + ' (Started ' + this.season.seasonStart + ', ' + int(this.season.seasonEnd-this.season.seasonStart) + ' days left!)';
                 if (window.location.hash) {
                     const params = new URLSearchParams(window.location.hash.substring(1));
 
