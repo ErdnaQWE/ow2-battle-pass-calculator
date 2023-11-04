@@ -22,7 +22,7 @@ document.addEventListener('alpine:init', () => {
 
             init() {
                 // get current season and display it
-                this.season = { season: 7, seasonStart: new Date('2023-10-10'), seasonEnd: new Date('2023-05-12') };
+                this.season = { season: 7, seasonStart: new Date(2023,10-1,10), seasonEnd: new Date(2023,12-1,5) };
                 document.getElementById('season_title').innerText = 'Season ' + this.season.season;
                 document.getElementById('season_subtitle').innerText = 'Started ' + this.season.seasonStart.toLocaleDateString() + ' (' + Math.floor((this.season.seasonEnd - this.season.seasonStart) / (1000 * 60 * 60 * 24)) + ' days left!)';
                 if (window.location.hash) {
