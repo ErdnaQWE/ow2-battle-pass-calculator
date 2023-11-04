@@ -129,6 +129,9 @@ document.addEventListener('alpine:init', () => {
             seasonEnd() {
                 return this.season.seasonEnd;
             },
+            seasonLength() {
+                return Math.floor(this.season.seasonEnd - this.season.seasonStart) / (1000 * 60 * 60 * 24);
+            },
             daysLeft() {
                 return (this.seasonEnd() - new Date()) / 86400000;
             },
@@ -313,7 +316,7 @@ document.addEventListener('alpine:init', () => {
                 return result;
             },
             projectedSpareDays() {
-                return Math.floor(this.season.seasonEnd - this.season.seasonStart) - (this.daysPlayed() + this.projectedDays());
+                return this.seasonLength() - (this.daysPlayed() + this.projectedDays());
             },
             projectedTiers() {
                 let expecting = this.currentXp() + (this.projectedDailyXp() * this.remainingDays());
@@ -343,7 +346,7 @@ document.addEventListener('alpine:init', () => {
                 return this.projectedPrestigeTiers() >= 120;
             },
             projectedPrestigeDays() {
-                return (Math.floor(this.season.seasonEnd - this.season.seasonStart) - this.projectedPrestigeSpareDays()) - this.daysPlayed();
+                return this.seasonLength() - this.projectedPrestigeSpareDays()) - this.daysPlayed();
             },
             projectedPrestigeSpareDays() {
                 let extra = this.projectedXp() - (2000000 - this.currentXp());
@@ -444,7 +447,7 @@ document.addEventListener('alpine:init', () => {
                 return Math.max(this.currentMissingXp() / this.expectedDailyXp(), 0);
             },
             expectedSpareDays() {
-                return Math.floor(this.season.seasonEnd - this.season.seasonStart) - (this.currentDay() + this.expectedDays());
+                return this.seasonLength() - (this.currentDay() + this.expectedDays());
             },
             expectedTiers() {
                 let expecting = this.currentXp() + this.expectedXp();
@@ -474,7 +477,7 @@ document.addEventListener('alpine:init', () => {
                 return this.expectedPrestigeTiers() >= 120;
             },
             expectedPrestigeDays() {
-                return (Math.floor(this.season.seasonEnd - this.season.seasonStart) - this.expectedPrestigeSpareDays()) - this.daysPlayed();
+                return (this.seasonLength() - this.expectedPrestigeSpareDays()) - this.daysPlayed();
             },
             expectedPrestigeSpareDays() {
                 let extra = this.expectedXp() - (2000000 - this.currentXp());
