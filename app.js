@@ -22,9 +22,9 @@ document.addEventListener('alpine:init', () => {
 
             init() {
                 // get current season and display it
-                this.season = this.getSeason(new Date('2023-06-13')); // Season 5
+                this.season = { season: 7, seasonStart: new Date('2023-10-10'), seasonEnd: new Date('2023-05-12') };
                 document.getElementById('season_title').innerText = 'Season ' + this.season.season;
-                document.getElementById('season_subtitle').innerText =  + 'Started ' + this.season.seasonStart.toLocaleDateString() + ' (' + ((this.season.seasonEnd - this.season.seasonStart) / (1000 * 60 * 60 * 24)) + ' days left!)';
+                document.getElementById('season_subtitle').innerText = 'Started ' + this.season.seasonStart.toLocaleDateString() + ' (' + Math.floor((this.season.seasonEnd - this.season.seasonStart) / (1000 * 60 * 60 * 24)) + ' days left!)';
                 if (window.location.hash) {
                     const params = new URLSearchParams(window.location.hash.substring(1));
 
@@ -99,6 +99,8 @@ document.addEventListener('alpine:init', () => {
 
             //season
             /**
+             * Currently unused, only works if the season lenghts are consistent which hasn't been true
+             * for the last couple seasons.
              *
              * @param {Date} startDate default is 2023-06-13 (Season 5)
              * @param {Date} today default is today, overwrite for testing
