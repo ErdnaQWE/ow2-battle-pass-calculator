@@ -313,7 +313,7 @@ document.addEventListener('alpine:init', () => {
                 return result;
             },
             projectedSpareDays() {
-                return 63 - (this.daysPlayed() + this.projectedDays());
+                return Math.floor(this.season.seasonEnd - this.season.seasonStart) - (this.daysPlayed() + this.projectedDays());
             },
             projectedTiers() {
                 let expecting = this.currentXp() + (this.projectedDailyXp() * this.remainingDays());
@@ -343,7 +343,7 @@ document.addEventListener('alpine:init', () => {
                 return this.projectedPrestigeTiers() >= 120;
             },
             projectedPrestigeDays() {
-                return (63 - this.projectedPrestigeSpareDays()) - this.daysPlayed();
+                return (Math.floor(this.season.seasonEnd - this.season.seasonStart) - this.projectedPrestigeSpareDays()) - this.daysPlayed();
             },
             projectedPrestigeSpareDays() {
                 let extra = this.projectedXp() - (2000000 - this.currentXp());
@@ -474,7 +474,7 @@ document.addEventListener('alpine:init', () => {
                 return this.expectedPrestigeTiers() >= 120;
             },
             expectedPrestigeDays() {
-                return (63 - this.expectedPrestigeSpareDays()) - this.daysPlayed();
+                return (Math.floor(this.season.seasonEnd - this.season.seasonStart) - this.expectedPrestigeSpareDays()) - this.daysPlayed();
             },
             expectedPrestigeSpareDays() {
                 let extra = this.expectedXp() - (2000000 - this.currentXp());
